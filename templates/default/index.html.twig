@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="card-deck mb-3 text-center">
+
+        {% for product in products %}
+
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card">{{ product.price }} $</h1>
+                    {{ product.description | slice(0, 70) ~ ' .....' }}
+                    <a href="{{ path('product.show', {'id': product.id}) }}" class="btn btn-lg btn-block btn-outline-primary">More details</a>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}
